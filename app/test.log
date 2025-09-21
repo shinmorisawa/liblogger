@@ -1,0 +1,51 @@
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+└─────┤
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►  ok then
+├─FATAL fatal lol
+├───►   ok what is this
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►   ok then
+├─FATAL fatal lol
+├───►   ok what is this
+└───
+┌─liblogger 0.0.1
+│
+├─INFO Hello there!
+├───►   ok then
+├─FATAL fatal lol
+├───►   ok what is this
+└───
