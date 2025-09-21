@@ -6,12 +6,12 @@ logger_src = files(
 
 logger_include = include_directories('src/include')
 
-liblogger = shared_library('logger', logger_src,
+shared_library('logger', logger_src,
   include_directories: logger_include,
   install: true
 )
 
-liblogger_a = static_library('logger', logger_src,
+static_library('logger', logger_src,
   include_directories: logger_include,
   install: true
 )

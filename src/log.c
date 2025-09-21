@@ -164,7 +164,8 @@ LoggerResult logger_close(Logger* l) {
     if (l->options.flags & LOGGER_CONSOLE_LOG)
         fprintf(stdout, "└───\n");
 
-    fclose(l->file);
+    if (l->file)
+        fclose(l->file);
 
     return r;
 }
