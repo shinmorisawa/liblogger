@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 int main() {
-	LoggerOptions options;
+	LoggerOptions options = {0};
 	options.filename = "test.log";
 	options.flags = LOGGER_CONSOLE_LOG | LOGGER_FILE_LOG | LOGGER_COLOR_ENABLE | LOGGER_ENABLE_SPLASH;
 	Logger logger = logger_init(options);

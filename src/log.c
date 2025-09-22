@@ -2,7 +2,7 @@
 #include "logger.h"
 
 Logger logger_init(LoggerOptions options) {
-    Logger logger;
+    Logger logger = {0};
     logger.options = options;
     logger.file = NULL;
     logger.result = OK;
@@ -32,7 +32,9 @@ Logger logger_init(LoggerOptions options) {
         fprintf(logger.file, "┌─\n└");
 
     fflush(stdout);
-    fflush(logger.file);
+
+    if (logger.file)
+        fflush(logger.file);
 
     return logger;
 }

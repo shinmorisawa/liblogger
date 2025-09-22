@@ -14,5 +14,12 @@ meson setup build --prefix=/usr --buildtype=release
 ninja -C build install
 ```
 
+### archlinux (aur)
+so first install yay/paru  
+```
+pacman -Syu
+yay -S liblogger
+```
+
 ## usage
 check [DOCS.md](DOCS.md)
