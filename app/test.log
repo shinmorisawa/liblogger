@@ -1,185 +1,0 @@
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-└─────┤
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►  ok then
-├─FATAL fatal lol
-├───►   ok what is this
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►   ok then
-├─FATAL fatal lol
-├───►   ok what is this
-└───
-┌─liblogger 0.0.1
-│
-├─INFO Hello there!
-├───►   ok then
-├─FATAL fatal lol
-├───►   ok what is this
-└───
-┌─liblogger 0.0.3
-├─INFO Hello there!
-├───►   ok then
-├─FATAL fatal lol
-├───►   ok what is this
-└───
-┌─liblogger 0.0.3
-└├─INFO Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger 0.0.3
-└├─INFO Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger 0.0.3
-└├─INFO Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger 0.0.3
-└├─INFO Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-├─INFO Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-├─INFO Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-○├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-○
-├─INFO  Hello there!
-└├───►   ok then
-└┌─
-├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌───
-├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger 0.0.3
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger 0.0.3
-└├─INFO  Hello there!
-└├───►   ok then
-└┌─
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─test
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger
-└├─INFO  Hello there!
-└├───►   ok then
-└├─FATAL fatal lol
-└├───►   ok what is this
-└└───
-┌─liblogger
-└├─TRACE hi
-└├─DEBUG hi
-└├─INFO  hi
-└├─WARN  hi
-└├─ERROR hi
-└├─FATAL hi
-└├─CATASTROPHIC hi
-└└───
