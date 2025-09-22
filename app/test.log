@@ -49,3 +49,110 @@
 ├─FATAL fatal lol
 ├───►   ok what is this
 └───
+┌─liblogger 0.0.3
+├─INFO Hello there!
+├───►   ok then
+├─FATAL fatal lol
+├───►   ok what is this
+└───
+┌─liblogger 0.0.3
+└├─INFO Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─liblogger 0.0.3
+└├─INFO Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─liblogger 0.0.3
+└├─INFO Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─liblogger 0.0.3
+└├─INFO Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+├─INFO Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+├─INFO Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+○├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+○
+├─INFO  Hello there!
+└├───►   ok then
+└┌─
+├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌───
+├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─liblogger 0.0.3
+└├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─liblogger 0.0.3
+└├─INFO  Hello there!
+└├───►   ok then
+└┌─
+└├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─
+└├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
+┌─
+└├─INFO  Hello there!
+└├───►   ok then
+└├─FATAL fatal lol
+└├───►   ok what is this
+└└───
