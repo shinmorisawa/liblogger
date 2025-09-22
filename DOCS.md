@@ -32,9 +32,10 @@ logger_close(&logger);
 
 # flags
 only 3 rn but others soon
-`LOGGER_CONSOLE_LOG` -> console logging
-`LOGGER_FILE_LOG` -> outputs to file, requires Logger.options.filename
-`LOGGER_COLOR_ENABLE` -> color (only console rn sorry)
+`LOGGER_CONSOLE_LOG` -> console logging  
+`LOGGER_FILE_LOG` -> outputs to file, requires Logger.options.filename  
+`LOGGER_COLOR_ENABLE` -> color (only console rn sorry)  
+`LOGGER_ENABLE_SPLASH` -> splash (defaults to "liblogger", set with options.splash)  
 
 # example
 ```c

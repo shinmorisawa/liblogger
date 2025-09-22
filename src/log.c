@@ -14,17 +14,18 @@ Logger logger_init(LoggerOptions options) {
                 logger.result = FOPEN_ERR;
                 return logger;
             }
-            if (options.flags & LOGGER_ENABLE_SPLASH) fprintf(logger.file, "┌─%s\n└", options.splash);
         } else {
             logger.result = FILENAME_ERR;
             return logger;
         }
     }
 
-    if (options.flags & LOGGER_CONSOLE_LOG) {
-        if (options.flags & LOGGER_ENABLE_SPLASH) fprintf(stdout, "┌─%s\n└", options.splash);
-    }
+    const char* splash = options.splash ? options.splash : "liblogger";
 
+    if ((options.flags & LOGGER_ENABLE_SPLASH) && (options.flags & LOGGER_CONSOLE_LOG)) 
+        fprintf(stdout, "┌─%s\n└", splash);
+    if ((options.flags & LOGGER_ENABLE_SPLASH) && (options.flags & LOGGER_FILE_LOG)) 
+        fprintf(logger.file, "┌─%s\n└", splash);
     if ((options.flags & LOGGER_CONSOLE_LOG) && !(options.flags & LOGGER_ENABLE_SPLASH))
         fprintf(stdout, "┌─\n└");
     if ((options.flags & LOGGER_FILE_LOG) && !(options.flags & LOGGER_ENABLE_SPLASH))

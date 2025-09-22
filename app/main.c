@@ -5,16 +5,16 @@
 int main() {
 	LoggerOptions options;
 	options.filename = "test.log";
-	options.flags = LOGGER_CONSOLE_LOG | LOGGER_FILE_LOG | LOGGER_COLOR_ENABLE;
-	options.splash = "test";
+	options.flags = LOGGER_CONSOLE_LOG | LOGGER_FILE_LOG | LOGGER_COLOR_ENABLE | LOGGER_ENABLE_SPLASH;
 	Logger logger = logger_init(options);
 
-	sleep(1);
-	logger_log(&logger, LOGGER_LOG_INFO, "Hello there!");
-	logger_log(&logger, LOGGER_LOG_INFO, "ok then");
-	sleep(3);
-	logger_log(&logger, LOGGER_LOG_FATAL, "fatal lol");
-	logger_log(&logger, LOGGER_LOG_FATAL, "ok what is this");
+	logger_log(&logger, LOGGER_LOG_TRACE, "hi");
+	logger_log(&logger, LOGGER_LOG_DEBUG, "hi");
+	logger_log(&logger, LOGGER_LOG_INFO, "hi");
+	logger_log(&logger, LOGGER_LOG_WARN, "hi");
+	logger_log(&logger, LOGGER_LOG_ERROR, "hi");
+	logger_log(&logger, LOGGER_LOG_FATAL, "hi");
+	logger_log(&logger, LOGGER_LOG_CATASTROPHIC, "hi");
 
 	logger_close(&logger);
 	return 0;
