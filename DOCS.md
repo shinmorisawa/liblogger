@@ -31,7 +31,7 @@ logger_close(&logger);
 |CATASTROPHIC|oh god, this is terrible!|
 
 # flags
-only 3 rn but others soon
+only 4 rn but others soon  
 `LOGGER_CONSOLE_LOG` -> console logging  
 `LOGGER_FILE_LOG` -> outputs to file, requires Logger.options.filename  
 `LOGGER_COLOR_ENABLE` -> color (only console rn sorry)  
