@@ -23,13 +23,13 @@ Logger logger_init(LoggerOptions options) {
     const char* splash = options.splash ? options.splash : "liblogger";
 
     if ((options.flags & LOGGER_ENABLE_SPLASH) && (options.flags & LOGGER_CONSOLE_LOG)) 
-        fprintf(stdout, "┌─%s\n└", splash);
+        fprintf(stdout, "┌─%s\n└─", splash);
     if ((options.flags & LOGGER_ENABLE_SPLASH) && (options.flags & LOGGER_FILE_LOG)) 
-        fprintf(logger.file, "┌─%s\n└", splash);
+        fprintf(logger.file, "┌─%s\n└─", splash);
     if ((options.flags & LOGGER_CONSOLE_LOG) && !(options.flags & LOGGER_ENABLE_SPLASH))
-        fprintf(stdout, "┌─\n└");
+        fprintf(stdout, "┌─\n└─");
     if ((options.flags & LOGGER_FILE_LOG) && !(options.flags & LOGGER_ENABLE_SPLASH))
-        fprintf(logger.file, "┌─\n└");
+        fprintf(logger.file, "┌─\n└─");
 
     fflush(stdout);
 
@@ -62,7 +62,7 @@ void logger_log(Logger* l, u8 level, const char* text) {
                 if (level & LOGGER_LOG_FATAL)        fprintf(stdout, "FATAL ");
                 if (level & LOGGER_LOG_CATASTROPHIC) fprintf(stdout, "CATASTROPHIC ");
 
-                fprintf(stdout, "%s\033[0m\n", text);
+                fprintf(stdout, "%s\033[0m\n└─", text);
             } else {
                 if (level & LOGGER_LOG_TRACE)        fprintf(stdout, "\r├─TRACE ");
                 if (level & LOGGER_LOG_DEBUG)        fprintf(stdout, "\r├─DEBUG ");
@@ -72,37 +72,37 @@ void logger_log(Logger* l, u8 level, const char* text) {
                 if (level & LOGGER_LOG_FATAL)        fprintf(stdout, "\r├─FATAL ");
                 if (level & LOGGER_LOG_CATASTROPHIC) fprintf(stdout, "\r├─CATASTROPHIC ");
 
-                fprintf(stdout, "%s\n└", text);
+                fprintf(stdout, "%s\n└─", text);
             }
         }
 
         if (l->options.flags & LOGGER_FILE_LOG) {
             if (level & LOGGER_LOG_TRACE) {
-                fprintf(l->file, "\r├─TRACE %s\n└", text);
+                fprintf(l->file, "\r├─TRACE %s\n└─", text);
             }
 
             if (level & LOGGER_LOG_DEBUG) {
-                fprintf(l->file, "\r├─DEBUG %s\n└", text);
+                fprintf(l->file, "\r├─DEBUG %s\n└─", text);
             }
 
             if (level & LOGGER_LOG_INFO) {
-                fprintf(l->file, "\r├─INFO  %s\n└", text);
+                fprintf(l->file, "\r├─INFO  %s\n└─", text);
             }
 
             if (level & LOGGER_LOG_WARN) {
-                fprintf(l->file, "\r├─WARN  %s\n└", text);
+                fprintf(l->file, "\r├─WARN  %s\n└─", text);
             }
 
             if (level & LOGGER_LOG_ERROR) {
-                fprintf(l->file, "\r├─ERROR %s\n└", text);
+                fprintf(l->file, "\r├─ERROR %s\n└─", text);
             }
 
             if (level & LOGGER_LOG_FATAL) {
-                fprintf(l->file, "\r├─FATAL %s\n└", text);
+                fprintf(l->file, "\r├─FATAL %s\n└─", text);
             }
 
             if (level & LOGGER_LOG_CATASTROPHIC) {
-                fprintf(l->file, "\r├─CATASTROPHIC %s\n└", text);
+                fprintf(l->file, "\r├─CATASTROPHIC %s\n└─", text);
             }
         }
     }
@@ -111,7 +111,7 @@ void logger_log(Logger* l, u8 level, const char* text) {
         char* color = "";
         if (level & 0b0110011) {
             if (l->options.flags & LOGGER_FILE_LOG) {
-                fprintf(l->file, "\r├───►   %s\n└", text);
+                fprintf(l->file, "\r├───►   %s\n└─", text);
             }
 
             if (l->options.flags & LOGGER_CONSOLE_LOG) {
@@ -163,7 +163,8 @@ void logger_log(Logger* l, u8 level, const char* text) {
     }
 
     fflush(stdout);
-    fflush(l->file);
+    if (l->file)
+        fflush(l->file);
 
     l->options.previous_log_type = level;
     l->result = OK;
@@ -173,9 +174,9 @@ LoggerResult logger_close(Logger* l) {
     LoggerResult r = OK;
 
     if (l->options.flags & LOGGER_FILE_LOG)
-        fprintf(l->file, "\r└───\n");
+        fprintf(l->file, "\r└─\n");
     if (l->options.flags & LOGGER_CONSOLE_LOG)
-        fprintf(stdout, "\r└───\n");
+        fprintf(stdout, "\r└─\n");
 
     if (l->file)
         fclose(l->file);

@@ -8,12 +8,19 @@ int main() {
 	options.flags = LOGGER_CONSOLE_LOG | LOGGER_FILE_LOG | LOGGER_COLOR_ENABLE | LOGGER_ENABLE_SPLASH;
 	Logger logger = logger_init(options);
 
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_TRACE, "hi");
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_DEBUG, "hi");
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_INFO, "hi");
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_WARN, "hi");
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_ERROR, "hi");
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_FATAL, "hi");
+	sleep(1);
 	logger_log(&logger, LOGGER_LOG_CATASTROPHIC, "hi");
 
 	logger_close(&logger);
