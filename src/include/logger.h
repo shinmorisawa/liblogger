@@ -58,6 +58,14 @@ typedef struct Logger {
 } Logger;
 /* end of types */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 Logger logger_init(LoggerOptions options);
 void logger_log(Logger* l, u8 level, const char* text);
 LoggerResult logger_close(Logger* l);
+
+#ifdef __cplusplus
+}
+#endif
