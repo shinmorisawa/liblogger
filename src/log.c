@@ -40,126 +40,65 @@ Logger logger_init(LoggerOptions options) {
 }
 
 void logger_log(Logger* l, u8 level, const char* text) {
-    if ((l->options.previous_log_type & level) == 0) {
-        if (l->options.flags & LOGGER_CONSOLE_LOG) {
-            if (l->options.flags & LOGGER_COLOR_ENABLE) {
-                const char* color = "";
-                if (level & LOGGER_LOG_TRACE)        color = "\033[36m";
-                if (level & LOGGER_LOG_DEBUG)        color = "\033[34m";
-                if (level & LOGGER_LOG_INFO)         color = "\033[32m";
-                if (level & LOGGER_LOG_WARN)         color = "\033[33m";
-                if (level & LOGGER_LOG_ERROR)        color = "\033[31m";
-                if (level & LOGGER_LOG_FATAL)        color = "\033[35m";
-                if (level & LOGGER_LOG_CATASTROPHIC) color = "\033[41m";
-
-                fprintf(stdout, "\r%s├─", color);
-
-                if (level & LOGGER_LOG_TRACE)        fprintf(stdout, "TRACE ");
-                if (level & LOGGER_LOG_DEBUG)        fprintf(stdout, "DEBUG ");
-                if (level & LOGGER_LOG_INFO)         fprintf(stdout, "INFO  ");
-                if (level & LOGGER_LOG_WARN)         fprintf(stdout, "WARN  ");
-                if (level & LOGGER_LOG_ERROR)        fprintf(stdout, "ERROR ");
-                if (level & LOGGER_LOG_FATAL)        fprintf(stdout, "FATAL ");
-                if (level & LOGGER_LOG_CATASTROPHIC) fprintf(stdout, "CATASTROPHIC ");
-
-                fprintf(stdout, "%s\033[0m\n└─", text);
-            } else {
-                if (level & LOGGER_LOG_TRACE)        fprintf(stdout, "\r├─TRACE ");
-                if (level & LOGGER_LOG_DEBUG)        fprintf(stdout, "\r├─DEBUG ");
-                if (level & LOGGER_LOG_INFO)         fprintf(stdout, "\r├─INFO  ");
-                if (level & LOGGER_LOG_WARN)         fprintf(stdout, "\r├─WARN  ");
-                if (level & LOGGER_LOG_ERROR)        fprintf(stdout, "\r├─ERROR ");
-                if (level & LOGGER_LOG_FATAL)        fprintf(stdout, "\r├─FATAL ");
-                if (level & LOGGER_LOG_CATASTROPHIC) fprintf(stdout, "\r├─CATASTROPHIC ");
-
-                fprintf(stdout, "%s\n└─", text);
-            }
-        }
-
-        if (l->options.flags & LOGGER_FILE_LOG) {
-            if (level & LOGGER_LOG_TRACE) {
+    /* file log */
+    if (l->options.flags & LOGGER_FILE_LOG) {
+        switch (level) {
+            case LOGGER_LOG_TRACE:
                 fprintf(l->file, "\r├─TRACE %s\n└─", text);
-            }
-
-            if (level & LOGGER_LOG_DEBUG) {
+            case LOGGER_LOG_DEBUG:
                 fprintf(l->file, "\r├─DEBUG %s\n└─", text);
-            }
-
-            if (level & LOGGER_LOG_INFO) {
+            case LOGGER_LOG_INFO:
                 fprintf(l->file, "\r├─INFO  %s\n└─", text);
-            }
-
-            if (level & LOGGER_LOG_WARN) {
+            case LOGGER_LOG_WARN:
                 fprintf(l->file, "\r├─WARN  %s\n└─", text);
-            }
-
-            if (level & LOGGER_LOG_ERROR) {
+            case LOGGER_LOG_ERROR:
                 fprintf(l->file, "\r├─ERROR %s\n└─", text);
-            }
-
-            if (level & LOGGER_LOG_FATAL) {
+            case LOGGER_LOG_FATAL:
                 fprintf(l->file, "\r├─FATAL %s\n└─", text);
-            }
-
-            if (level & LOGGER_LOG_CATASTROPHIC) {
+            case LOGGER_LOG_CATASTROPHIC:
                 fprintf(l->file, "\r├─CATASTROPHIC %s\n└─", text);
-            }
         }
     }
 
-    if (l->options.previous_log_type & level) {
-        char* color = "";
-        if (level & 0b0110011) {
-            if (l->options.flags & LOGGER_FILE_LOG) {
-                fprintf(l->file, "\r├───►   %s\n└─", text);
-            }
-
-            if (l->options.flags & LOGGER_CONSOLE_LOG) {
-                if (l->options.flags & LOGGER_COLOR_ENABLE) {
-                    if (level & LOGGER_LOG_TRACE)       color = "\033[36m";
-                    else if (level & LOGGER_LOG_DEBUG)  color = "\033[34m";
-                    else if (level & LOGGER_LOG_ERROR)  color = "\033[31m";
-                    else if (level & LOGGER_LOG_FATAL)  color = "\033[35m";
-
-                    fprintf(stdout, "\r%s├───►   %s\n└", color, text);
-                } else {
-                    fprintf(stdout, "\r├───►   %s\n└", text);
-                }
-            }
-        }
-
-        if (level & 0b0001100) {
-            if (l->options.flags & LOGGER_FILE_LOG) {
-                fprintf(l->file, "\r├───►   %s\n└", text);
-            }
-
-            if (l->options.flags & LOGGER_CONSOLE_LOG) {
-                if (l->options.flags & LOGGER_COLOR_ENABLE) {
-                    if (level & LOGGER_LOG_INFO)   color = "\033[32m";
-                    else if (level & LOGGER_LOG_WARN)   color = "\033[33m";
-
-                    fprintf(stdout, "\r%s├───►   %s\n└", color, text);
-                } else {
-                    fprintf(stdout, "\r├───►  %s\n└", text);
-                }
+    /* console log */
+    if (l->options.flags & LOGGER_CONSOLE_LOG) {
+        char* color;
+        if (l->options.flags & LOGGER_COLOR_ENABLE) {
+            switch (level) {
+                case LOGGER_LOG_TRACE:
+                    color = LOGGER_COLOR_TRACE;
+                case LOGGER_LOG_DEBUG:
+                    color = LOGGER_COLOR_DEBUG;
+                case LOGGER_LOG_INFO:
+                    color = LOGGER_COLOR_INFO;
+                case LOGGER_LOG_WARN:
+                    color = LOGGER_COLOR_WARN;
+                case LOGGER_LOG_ERROR:
+                    color = LOGGER_COLOR_ERROR;
+                case LOGGER_LOG_FATAL:
+                    color = LOGGER_COLOR_FATAL;
+                case LOGGER_LOG_CATASTROPHIC:
+                    color = LOGGER_COLOR_CATASTROPHIC;
             }
         }
-
-        if (level & 0b1000000) {
-            if (l->options.flags & LOGGER_FILE_LOG) {
-                fprintf(l->file, "\r├───►          %s\n└", text);
-            }
-
-            if (l->options.flags & LOGGER_CONSOLE_LOG) {
-                if (l->options.flags & LOGGER_COLOR_ENABLE) {
-                    if (level & LOGGER_LOG_CATASTROPHIC) color = "\033[41m";
-
-                    fprintf(stdout, "\r%s├───►          %s\n└", color, text);
-                } else {
-                    fprintf(stdout, "\r├───►          %s\n└", text);
-                }
-            }
+        fprintf(stdout, "%s", color);
+        switch (level) {
+            case LOGGER_LOG_TRACE:
+                fprintf(stdout, "\r├─TRACE %s\n└─", text);
+            case LOGGER_LOG_DEBUG:
+                fprintf(stdout, "\r├─DEBUG %s\n└─", text);
+            case LOGGER_LOG_INFO:
+                fprintf(stdout, "\r├─INFO  %s\n└─", text);
+            case LOGGER_LOG_WARN:
+                fprintf(stdout, "\r├─WARN  %s\n└─", text);
+            case LOGGER_LOG_ERROR:
+                fprintf(stdout, "\r├─ERROR %s\n└─", text);
+            case LOGGER_LOG_FATAL:
+                fprintf(stdout, "\r├─FATAL %s\n└─", text);
+            case LOGGER_LOG_CATASTROPHIC:
+                fprintf(stdout, "\r├─CATASTROPHIC %s\n└─", text);
         }
+        fprintf(stdout, "%s", LOGGER_COLOR_RESET);
     }
 
     fflush(stdout);
