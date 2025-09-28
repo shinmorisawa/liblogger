@@ -28,7 +28,7 @@
 #define LOGGER_COLOR_WARN         "\033[33m"
 #define LOGGER_COLOR_ERROR        "\033[31m"
 #define LOGGER_COLOR_FATAL        "\033[35m"
-#define LOGGER_COLOR_CATASTROPHIC "\033[41m"
+#define LOGGER_COLOR_CATASTROPHIC "\033[31m"
 #define LOGGER_COLOR_RESET        "\033[0m"
 
 /* types */

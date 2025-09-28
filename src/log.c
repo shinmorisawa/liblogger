@@ -67,36 +67,56 @@ void logger_log(Logger* l, u8 level, const char* text) {
             switch (level) {
                 case LOGGER_LOG_TRACE:
                     color = LOGGER_COLOR_TRACE;
+                    break;
                 case LOGGER_LOG_DEBUG:
                     color = LOGGER_COLOR_DEBUG;
+                    break;
                 case LOGGER_LOG_INFO:
                     color = LOGGER_COLOR_INFO;
+                    break;
                 case LOGGER_LOG_WARN:
                     color = LOGGER_COLOR_WARN;
+                    break;
                 case LOGGER_LOG_ERROR:
                     color = LOGGER_COLOR_ERROR;
+                    break;
                 case LOGGER_LOG_FATAL:
                     color = LOGGER_COLOR_FATAL;
+                    break;
                 case LOGGER_LOG_CATASTROPHIC:
                     color = LOGGER_COLOR_CATASTROPHIC;
+                    break;
+                default:
+                    color = LOGGER_COLOR_RESET;
+                    break;
             }
         }
         fprintf(stdout, "%s", color);
         switch (level) {
             case LOGGER_LOG_TRACE:
                 fprintf(stdout, "\r├─TRACE %s\n└─", text);
+                break;
             case LOGGER_LOG_DEBUG:
                 fprintf(stdout, "\r├─DEBUG %s\n└─", text);
+                break;
             case LOGGER_LOG_INFO:
                 fprintf(stdout, "\r├─INFO  %s\n└─", text);
+                break;
             case LOGGER_LOG_WARN:
                 fprintf(stdout, "\r├─WARN  %s\n└─", text);
+                break;
             case LOGGER_LOG_ERROR:
                 fprintf(stdout, "\r├─ERROR %s\n└─", text);
+                break;
             case LOGGER_LOG_FATAL:
                 fprintf(stdout, "\r├─FATAL %s\n└─", text);
+                break;
             case LOGGER_LOG_CATASTROPHIC:
                 fprintf(stdout, "\r├─CATASTROPHIC %s\n└─", text);
+                break;
+            default:
+                fprintf(stdout, "\r├─LOG   %s\n└─", text);
+                break;
         }
         fprintf(stdout, "%s", LOGGER_COLOR_RESET);
     }
@@ -115,7 +135,7 @@ LoggerResult logger_close(Logger* l) {
     if (l->options.flags & LOGGER_FILE_LOG)
         fprintf(l->file, "\r└─\n");
     if (l->options.flags & LOGGER_CONSOLE_LOG)
-        fprintf(stdout, "\r└─\n");
+        fprintf(stdout, "\r└─\n%s", LOGGER_COLOR_RESET);
 
     if (l->file)
         fclose(l->file);
