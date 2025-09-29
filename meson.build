@@ -6,6 +6,9 @@ logger_src = files(
 
 logger_include = include_directories('src/include')
 
+warning_level = 3
+werror = true
+
 shared_library('logger', logger_src,
   include_directories: logger_include,
   install: true

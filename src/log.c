@@ -62,7 +62,7 @@ void logger_log(Logger* l, u8 level, const char* text) {
 
     /* console log */
     if (l->options.flags & LOGGER_CONSOLE_LOG) {
-        char* color;
+        char* color = LOGGER_COLOR_RESET;
         if (l->options.flags & LOGGER_COLOR_ENABLE) {
             switch (level) {
                 case LOGGER_LOG_TRACE:

@@ -50,6 +50,7 @@ typedef enum LoggerResult {
     ERR = 1,
     FOPEN_ERR = 2,
     FILENAME_ERR = 3,
+    SOCKET_ERR = 4
 } LoggerResult;
 
 typedef struct LoggerOptions {
@@ -62,8 +63,8 @@ typedef struct LoggerOptions {
 
 typedef struct Logger {
     LoggerOptions options;
-    FILE* file;
     LoggerResult result;
+    FILE* file;
 } Logger;
 /* end of types */
 
