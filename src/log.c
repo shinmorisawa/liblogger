@@ -45,18 +45,25 @@ void logger_log(Logger* l, u8 level, const char* text) {
         switch (level) {
             case LOGGER_LOG_TRACE:
                 fprintf(l->file, "\r├─TRACE %s\n└─", text);
+                break;
             case LOGGER_LOG_DEBUG:
                 fprintf(l->file, "\r├─DEBUG %s\n└─", text);
+                break;
             case LOGGER_LOG_INFO:
                 fprintf(l->file, "\r├─INFO  %s\n└─", text);
+                break;
             case LOGGER_LOG_WARN:
                 fprintf(l->file, "\r├─WARN  %s\n└─", text);
+                break;
             case LOGGER_LOG_ERROR:
                 fprintf(l->file, "\r├─ERROR %s\n└─", text);
+                break;
             case LOGGER_LOG_FATAL:
                 fprintf(l->file, "\r├─FATAL %s\n└─", text);
+                break;
             case LOGGER_LOG_CATASTROPHIC:
                 fprintf(l->file, "\r├─CATASTROPHIC %s\n└─", text);
+                break;
         }
     }
 
@@ -76,8 +83,7 @@ void logger_log(Logger* l, u8 level, const char* text) {
                     break;
                 case LOGGER_LOG_WARN:
                     color = LOGGER_COLOR_WARN;
-                    break;
-                case LOGGER_LOG_ERROR:
+                    break; case LOGGER_LOG_ERROR:
                     color = LOGGER_COLOR_ERROR;
                     break;
                 case LOGGER_LOG_FATAL:

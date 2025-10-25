@@ -1,8 +1,9 @@
 project('logger', 'c')
 
 logger_src = files(
-  'src/log.c'
 )
+
+subdir('src')
 
 logger_include = include_directories('src/include')
 
