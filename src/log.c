@@ -83,7 +83,8 @@ void logger_log(Logger* l, u8 level, const char* text) {
                     break;
                 case LOGGER_LOG_WARN:
                     color = LOGGER_COLOR_WARN;
-                    break; case LOGGER_LOG_ERROR:
+                    break;
+                case LOGGER_LOG_ERROR:
                     color = LOGGER_COLOR_ERROR;
                     break;
                 case LOGGER_LOG_FATAL:
